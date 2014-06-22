@@ -44,10 +44,10 @@ puts "Trainer #{name_one}: \"#{pokemon_one}, use #{move_one}!\""
 		
 #- Calculate each move's damage
 #-->Be sure to add multipliers based on Pokemon type (water x2 against fire, e.g.)
-#- Subtract damage from Pokemon's hp 
-puts "hu"
-data = RestClient.get("http://pokeapi.co/api/v1/pokemon/#{x}/")
-parsed_data_two = JSON.parse(data)
-hp_status = 
+# #- Subtract damage from Pokemon's hp 
+# puts "hu"
+# data = RestClient.get("http://pokeapi.co/api/v1/pokemon/#{x}/")
+# parsed_data_two = JSON.parse(data)
+# hp_status = 
 #- Print out remaining HP for affected pokemon; continue with player 2's turn
 #- Continue until one Pokemon has 0 HP
