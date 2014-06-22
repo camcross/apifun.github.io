@@ -20,7 +20,7 @@ puts "Great choice! Fetching your Pokeball now..."
 data = RestClient.get("http://pokeapi.co/api/v1/pokemon/#{x}/")
 parsed_data_one = JSON.parse(data)
 pokemon_one = parsed_data_one["name"]
-hp_initial_one = parsed_data_one["hp"]
+hp_initial_one = (parsed_data_one["hp"] + 200)
 puts "Your pokemon is #{pokemon_one} and your hp status is #{hp_initial_one}!"
 
 #Get Pokemon for Player 2
@@ -30,13 +30,13 @@ puts "Great choice! Fetching your Pokeball now..."
 data = RestClient.get("http://pokeapi.co/api/v1/pokemon/#{x}/")
 parsed_data_two = JSON.parse(data)
 pokemon_two = parsed_data_two["name"]
-hp_initial_two = parsed_data_two ["hp"]
+hp_initial_two = (parsed_data_two ["hp"] + 200)
 puts "Your pokemon is #{pokemon_two} and your hp status is #{hp_initial_two}!"
 
 #TODO: Find a way to let each player pick a random move
 #- Let each player know how many moves are available, and have him pick a number within that range
 
-#while (hp_one > 0 && hp_two > 0)
+while true
 	puts "Trainer #{name_one}, choose your move! #{pokemon_one} has #{parsed_data_one["moves"].size} 
 		moves. Which will you use?"
 	num_one = gets.strip.to_i	
@@ -70,22 +70,25 @@ puts "Your pokemon is #{pokemon_two} and your hp status is #{hp_initial_two}!"
 	if (power_one == 0)
 		puts "#{pokemon_one} successfully defends #{move_two}, no damage is done!"
 	else	
-		puts "#{move_two} inflicts #{power_two} damage on #{pokemon_one}!"	
+		puts "#{move_two} inflicts #{power_two} damage on #{pokemon_one}!"
+		hp_initial_two -= power_one
 	end	
+
 	if (power_two == 0)
 		puts "#{pokemon_two} successfully defends #{move_one}, no damage is done!"
 	else
 		puts "#{move_one} inflicts #{power_one} damage on #{pokemon_two}!"	
+		hp_initial_one -= power_two
 	end	
-#end			
+
+	puts "#{pokemon_one} now has #{hp_initial_one} hp left!"
+	puts "#{pokemon_two} now has #{hp_initial_two} hp left!"
+
+
+end			
 
 #-->Be sure to add multipliers based on Pokemon type (water x2 against fire, e.g.)
 
-# #- Subtract damage from Pokemon's hp 
-# puts "hu"
-# data = RestClient.get("http://pokeapi.co/api/v1/pokemon/#{x}/")
-# parsed_data_two = JSON.parse(data)
-# hp_status = 
-#- Print out remaining HP for affected pokemon; continue with player 2's turn
-#- Continue until one Pokemon has 0 HP
+#TODO: End game when someone has 0 hp
+#Strengthen code to deal with invalid inputs
 
