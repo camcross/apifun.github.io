@@ -20,7 +20,8 @@ puts "Great choice! Fetching your Pokeball now..."
 data = RestClient.get("http://pokeapi.co/api/v1/pokemon/#{x}/")
 parsed_data_one = JSON.parse(data)
 pokemon_one = parsed_data_one["name"]
-puts "Your pokemon is #{pokemon_one}!"
+hp_initial_one = parsed_data_one["hp.to_i"]
+puts "Your pokemon is #{pokemon_one} and your hp status is #{hp_initial_one}!"
 
 #Get Pokemon for Player 2
 puts "Trainer #{name_two}, please enter the Pokedex number of your pokemon(1-101): "
@@ -29,7 +30,8 @@ puts "Great choice! Fetching your Pokeball now..."
 data = RestClient.get("http://pokeapi.co/api/v1/pokemon/#{x}/")
 parsed_data_two = JSON.parse(data)
 pokemon_two = parsed_data_two["name"]
-puts "Your pokemon is #{pokemon_two}!"
+hp_initial_two = parsed_data_two ["hp.to_i"]
+puts "Your pokemon is #{pokemon_two} and your hp status is #{hp_initial_two}!"
 
 #TODO: Find a way to let each player pick a random move
 #- Let each player know how many moves are available, and have him pick a number within that range
@@ -43,5 +45,9 @@ puts "Trainer #{name_one}: \"#{pokemon_one}, use #{move_one}!\""
 #- Calculate each move's damage
 #-->Be sure to add multipliers based on Pokemon type (water x2 against fire, e.g.)
 #- Subtract damage from Pokemon's hp 
+puts "hu"
+data = RestClient.get("http://pokeapi.co/api/v1/pokemon/#{x}/")
+parsed_data_two = JSON.parse(data)
+hp_status = 
 #- Print out remaining HP for affected pokemon; continue with player 2's turn
 #- Continue until one Pokemon has 0 HP
