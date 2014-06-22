@@ -20,7 +20,7 @@ puts "Great choice! Fetching your Pokeball now..."
 data = RestClient.get("http://pokeapi.co/api/v1/pokemon/#{x}/")
 parsed_data_one = JSON.parse(data)
 pokemon_one = parsed_data_one["name"]
-hp_initial_one = parsed_data_one["hp.to_i"]
+hp_initial_one = parsed_data_one["hp"]
 puts "Your pokemon is #{pokemon_one} and your hp status is #{hp_initial_one}!"
 
 #Get Pokemon for Player 2
@@ -30,7 +30,7 @@ puts "Great choice! Fetching your Pokeball now..."
 data = RestClient.get("http://pokeapi.co/api/v1/pokemon/#{x}/")
 parsed_data_two = JSON.parse(data)
 pokemon_two = parsed_data_two["name"]
-hp_initial_two = parsed_data_two ["hp.to_i"]
+hp_initial_two = parsed_data_two ["hp"]
 puts "Your pokemon is #{pokemon_two} and your hp status is #{hp_initial_two}!"
 
 #TODO: Find a way to let each player pick a random move
